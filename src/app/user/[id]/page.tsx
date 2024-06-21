@@ -17,7 +17,7 @@ const getUser = cache(async (id: string) => {
 export async function generateStaticParams() {
   const allUsers = await prisma.user.findMany();
 
-  return allUsers.map(({ id }) => ({ id }));
+  return allUsers.map(({ id }: { id: string }) => ({ id }));
 }
 
 export async function generateMetadata({ params: { id } }: PageProps) {
